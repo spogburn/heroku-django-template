@@ -12,7 +12,8 @@ An utterly fantastic project starter template for Django 1.11.
 
 To use this project, follow these steps:
 
-1. Create your working environment.
+1. Create a directory for your project(`$ mkdir projectname;cd projectname`) 
+1. Create your working environment. (`$ python3 -m venv env`)
 2. Install Django (`$ pip install django`)
 3. Create a new project using this template
 
@@ -20,11 +21,11 @@ To use this project, follow these steps:
 
 Using this template to create a new Django app is easy::
 
-    $ django-admin.py startproject --template=https://github.com/RadialDevGroup/heroku-django-template/archive/master.zip --name=Procfile helloworld
+    $ django-admin.py startproject --template=https://github.com/RadialDevGroup/heroku-django-template/archive/master.zip --name=Procfile projectname .
 
 (If this doesn't work on windows, replace `django-admin.py` with `django-admin`)
 
-You can replace ``helloworld`` with your desired project name.
+You can replace ``projectname`` with your desired project name.
 
 ## Deployment to Heroku
 

@@ -21,7 +21,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 env = os.environ
 
 try:
-    f = open(os.path.join(BASE_DIR, 'settings.yml'), 'r')
+    f = open(os.path.join(PROJECT_ROOT, 'settings.yml'), 'r')
     env = { **os.environ, **yaml.load(f) }
 except:
     pass
