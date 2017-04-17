@@ -18,13 +18,11 @@ from django.core.exceptions import ImproperlyConfigured
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-env = os.environ
-
 try:
-    f = open(os.path.join(PROJECT_ROOT, 'settings.yml'), 'r')
-    env = { **os.environ, **yaml.load(f) }
+    local_settings = open(os.path.join(PROJECT_ROOT, 'settings.yml'), 'r')
+    env = {**os.environ, **yaml.load(local_settings)}
 except:
-    pass
+    env = os.environ
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -135,7 +133,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.10/howto/static-files/
+# https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
@@ -151,7 +149,7 @@ if not TEST:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 if env.get('ROLLBAR_ACCESS_TOKEN', None):
-    MIDDLEWARE_CLASSES.append('rollbar.contrib.django.middleware.RollbarNotifierMiddleware')
+    MIDDLEWARE.append('rollbar.contrib.django.middleware.RollbarNotifierMiddleware')
     ROLLBAR = {
         'access_token': env.get('ROLLBAR_ACCESS_TOKEN'),
         'environment': 'development' if DEBUG else 'production',
