@@ -29,6 +29,7 @@ You can replace ``projectname`` with your desired project name.
 
 ## Deployment to Heroku
 
+    $ cd projectname
     $ git init
     $ git add -A
     $ git commit -m "Initial commit"
